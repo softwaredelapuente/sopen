@@ -8,8 +8,9 @@ sopen is a comand for replaicing the xdg-open command for one simpler that also 
 ```sh
 
     sopen some-file
+    sopen -c other-sopen.list some-file
 ```
-sopen will look in the sopen.list which program or file.desktop should use for opening the file based in it's mime type.
+sopen will look in the sopen.list which program or file.desktop should use for opening the file based in it's mime type. with -c you could chage which file use for looking the mime types.
 
 ## sopen.list example
 ```
