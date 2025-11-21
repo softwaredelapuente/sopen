@@ -1,0 +1,63 @@
+.\" -*- mode: troff; coding: utf-8 -*-
+.TH "sopen" "1" "2025-11-20"
+.SH sopen
+.LP
+\fBsimple open\fR opens files based in ther mime types.
+.SS
+Description
+.LP
+simple open is a comand for replaicing the xdg-open command for one simpler that also accepts the \f(CR*\fR wildcard. Uses a file called sopen.list, but you can use your mimeapps.list file, for opening each file with the corret comand or files.desktop document. It will look for the file\(cqs mime type and in case there no one look for the most fiting one using the \f(CR*\fR wildcard, see more down in example of a sopen.list.
+.SS
+sopen example
+.LP
+.EX
+
+    sopen some-file
+.EE
+.LP
+sopen will look in the sopen.list which program or file.desktop should use for opening the file based in it\(cqs mime type.
+.SS
+sopen.list example
+.LP
+.EX
+
+    text/*=$EDITOR
+    text/markdown=nvim
+    text/html=firefox.desktop
+    application/pdf=zathura
+    application/vnd.oasis.opendocument.text=libreoffice-writter.desktop
+    application/vnd.oasis.opendocument.*=libreoffice
+    image/*=feh
+.EE
+.LP
+In this example of a sopen.list we described the use of firefox for html files, nvim for markdown ones ,in the rest of text/ cases the $EDITOR variable, zathura for pdf, libreoffice.desktop for opendocuments for text (odt for example), the libreoffice cmd for the rest of files that libreoffice suport (libreoffic-calc, libreoffic-draw, \[u2026]) and feh for al the images files (png, webp, jpg, etc).
+.PP
+It will always have priority the more precise mime-type with wildcard:  
+.IP "1." 3
+text/x-common-lisp=editor1
+.if n \
+.sp -1
+.if t \
+.sp -0.25v
+.IP "2." 3
+text/x-comm*=editor2
+.if n \
+.sp -1
+.if t \
+.sp -0.25v
+.IP "3." 3
+text/*=editor3
+.LP
+A text/comma-separated-values will use editor 2, a text/x-common-lisp will use editor1 and the rest of text/ will use editor3.
+.PP
+sopen.list is by default in \(ti/.config/sopen/sopen.list
+It could be change in the FILE variable in sopen.sh
+.SS
+Licence
+.LP
+Copyright \(co Juan de la Puente Valbuena \c
+.MT softwaredelapuente@gmail.com
+.ME
+Licensed under the EUPL-1.2 see more details in \c
+.UR https://eupl.eu/1.2/en
+.UE

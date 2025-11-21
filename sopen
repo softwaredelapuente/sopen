@@ -1,0 +1,43 @@
+#!/bin/sh
+
+LIST=$HOME/.config/sopen/sopen.list
+
+if [ "$1" = "-c" ] && [ -n "$2" ]; then
+	LIST="$2"
+	shift 2
+fi
+
+type=$(file -b --mime-type $1)
+app=$(grep -m 1 "^$type=" "$LIST" | sed 's/.*=//')
+
+look_wildcard(){
+	tmp="$type"
+	while [ -z "$app" ]; do
+		wildcard=$(printf '%s' "$tmp" | sed 's/.$/\*/')
+		last=$(printf '%s' "$wildcard" | sed 's/.*\(.\)$/\1/')
+		wildcard_escaped=$(echo "$wildcard" | sed 's/\*/\\*/g')
+		if [ -z "$wildcard" ] ||  [ "$last" = "/" ]; then
+		echo "sopen did not define for $type"
+    		exit 1
+		fi
+
+		tmp=$(printf '%s' "$wildcard" | sed 's/.$//')
+		app=$(grep -m 1 "^$wildcard_escaped" "$LIST" | sed 's/.*=//')
+	done
+}
+
+if [ -z "$app" ]; then
+	look_wildcard
+fi
+
+
+case $app in
+*.desktop)
+	cmd=$(find ~/.local/share/applications /usr/share/applications -name '*.desktop' | \
+	grep -m 1 '^Exec' | sed 's/%.*//')
+	"$cmd" "$1"
+	;;
+*)
+	"$app" "$1"
+	;;
+esac
