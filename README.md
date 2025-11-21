@@ -2,7 +2,7 @@
 sopen stands for **simple open** and opens files based in ther mime types.
 
 ## Description
-sopen is a comand for replaicing the xdg-open command for one simpler that also accepts the '\*' wildcard. Uses a file called sopen.list, but you can use your mimeapps.list file, for opening each file with the corret comand or files.desktop document. It will look for the file's mime type and in case there no one look for the most fiting one using the '\*' wildcard, see more down in example of a sopen.list.
+sopen is a comand for replaicing the xdg-open command for one simpler that also accepts the '\*' wildcard. Uses a file called sopen.list, but you can use your mimeapps.list file, for opening each file with the corret comand or files.desktop document. It will look for the file's mime type and in case there no one look for the most fitting one using the '\*' wildcard, see more down in example of a sopen.list.
 
 ## sopen example
 ```sh
@@ -28,6 +28,7 @@ It will always have priority the more precise mime-type with wildcard:
 1. text/x-common-lisp=editor1
 2. text/x-comm\*=editor2
 3. text/\*=editor3
+
 A text/comma-separated-values will use editor 2, a text/x-common-lisp will use editor1 and the rest of text/ will use editor3.
 
 sopen.list is by default in ~/.config/sopen/sopen.list
