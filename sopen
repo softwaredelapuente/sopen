@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Copyright (c) Juan de la Puente Valbuena softwaredelapuente@gmail.com 
+# Licensed under the EUPL-1.2 see more details in LICENSE
+
 LIST=$HOME/.config/sopen/sopen.list
 
 if [ "$1" = "-c" ] && [ -n "$2" ]; then
