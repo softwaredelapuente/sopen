@@ -36,8 +36,9 @@ sopen.list is by default in ~/.config/sopen/sopen.list
 It could be change in the FILE variable in sopen.sh
 
 ## ¿Why sopen?
-The xgd-open command does not let you use the \* wildcard an the handlr program from my perspective is an overengineered piece of software. sopen is a extremely simple POSIX compliance shell script usin POSIX compliance arguments for file, grep and sed.
+The xgd-open command does not let you use the \* wildcard an the handlr program from my perspective is an overengineered piece of software. sopen is a extremely simple POSIX compliance shell script using POSIX compliance arguments for file, grep and sed.
 
 ## Licence
 Copyright (c) Juan de la Puente Valbuena <softwaredelapuente@gmail.com>
+
 Licensed under the EUPL-1.2 see more details in LICENSE
