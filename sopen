@@ -38,9 +38,9 @@ case $app in
 *.desktop)
 	cmd=$(find ~/.local/share/applications /usr/share/applications -name '*.desktop' | \
 	grep -m 1 '^Exec' | sed 's/%.*//')
-	"$cmd" "$1"
+	"$cmd" "$1" &
 	;;
 *)
-	"$app" "$1"
+	"$app" "$1" &
 	;;
 esac
