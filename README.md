@@ -15,7 +15,7 @@ sopen will look in the sopen.list which program or file.desktop should use for o
 ## sopen.list example
 ```
 
-    text/*=$EDITOR
+    text/*=nano
     text/markdown=nvim
     text/html=firefox.desktop
     application/pdf=zathura
@@ -23,7 +23,7 @@ sopen will look in the sopen.list which program or file.desktop should use for o
     application/vnd.oasis.opendocument.*=libreoffice
     image/*=feh
 ```
-In this example of a sopen.list we described the use of firefox for html files, nvim for markdown ones ,in the rest of text/ cases the $EDITOR variable, zathura for pdf, libreoffice.desktop for opendocuments for text (odt for example), the libreoffice cmd for the rest of files that libreoffice suport (libreoffic-calc, libreoffic-draw, ...) and feh for al the images files (png, webp, jpg, etc).
+In this example of a sopen.list we described the use of firefox for html files, nvim for markdown ones ,in the rest of text/ cases the nano editor, zathura for pdf, libreoffice.desktop for opendocuments for text (odt for example), the libreoffice cmd for the rest of files that libreoffice suport (libreoffic-calc, libreoffic-draw, ...) and feh for al the images files (png, webp, jpg, etc).
 
 It will always have priority the more precise mime-type with wildcard:
 1. text/x-common-lisp=editor1
